@@ -174,7 +174,7 @@ impl LlamaMeta {
             TensorUsage::Storage => Tensor::new(dt_linear, &[row, col / dt_linear.group_size()]),
             TensorUsage::Computation => {
                 assert_eq!(dt_embd.group_size(), 1);
-                Tensor::new(dt_embd, &[row, col]).transpose(&[1, 0])
+                Tensor::new(dt_linear, &[row, col]).transpose(&[1, 0])
             }
         }
     }
@@ -194,7 +194,7 @@ impl LlamaMeta {
             }
             TensorUsage::Computation => {
                 assert_eq!(dt_embd.group_size(), 1);
-                Tensor::new(dt_embd, &[row, col]).transpose(&[1, 0])
+                Tensor::new(dt_linear, &[row, col]).transpose(&[1, 0])
             }
         }
     }

@@ -127,7 +127,7 @@ impl Tokenizer {
             .tokenizer_ggml_unknown_token_id()
             .or(gguf.tokenizer_ggml_padding_token_id())
             .unwrap_or_else(|_| {
-                assert_eq!(bos, eos);
+                //assert_eq!(bos, eos);
                 bos
             });
 

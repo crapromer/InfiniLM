@@ -26,7 +26,7 @@ impl Tensor<usize> {
         Self {
             dt,
             layout: ArrayLayout::new_contiguous(shape, Endian::BigEndian, ele),
-            physical: shape.iter().product::<usize>() * ele,
+            physical: shape.iter().product::<usize>() * ele / dt.group_size(),
         }
     }
 }
